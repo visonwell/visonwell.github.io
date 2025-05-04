@@ -14,8 +14,20 @@
         header {
             background-color: #1a5276;
             color: white;
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .logo-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
         nav {
             background-color: #2874a6;
@@ -51,54 +63,191 @@
             padding: 20px 0;
             margin-top: 30px;
         }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .language-switcher select {
+            background: white;
+            color: black;
+            border: 1px solid #ddd;
+            padding: 3px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>深圳市华盛伟业网络技术有限公司</h1>
-        <p>专业电子元器件与技术服务提供商</p>
+        <div class="language-switcher">
+            <select id="languageSelect">
+                <option value="zh-CN">简体中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="zh-TW">繁體中文</option>
+            </select>
+        </div>
+        <div class="logo-title-container">
+            <img src="VisonWell.png" alt="公司logo" style="height: 60px;">
+            <div>
+                <h1 id="companyName">深圳市华盛伟业网络技术有限公司</h1>
+                <p id="slogan">专业电子元器件与技术服务提供商</p>
+            </div>
+        </div>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#home">首页</a></li>
-            <li><a href="#products">产品服务</a></li>
-            <li><a href="#about">关于我们</a></li>
-            <li><a href="#contact">联系我们</a></li>
+            <li><a href="#home" id="navHome">首页</a></li>
+            <li><a href="#products" id="navProducts">产品服务</a></li>
+            <li><a href="#about" id="navAbout">关于我们</a></li>
+            <li><a href="#contact" id="navContact">联系我们</a></li>
         </ul>
     </nav>
     
     <div class="container">
         <section id="home">
-            <h2>欢迎来到华盛伟业</h2>
-            <p>我们致力于为客户提供优质的电子元器件和技术服务解决方案。</p>
+            <h2 id="welcomeTitle">欢迎来到华盛伟业</h2>
+            <p id="welcomeText">我们致力于为客户提供优质的电子元器件和技术服务解决方案。</p>
         </section>
         
         <section class="business-section" id="products">
-            <h2>主营业务</h2>
+            <h2 id="businessTitle">主营业务</h2>
             <div>
-                <h3>电子元器件</h3>
+                <h3 id="product1">电子元器件</h3>
                 <p>批发与零售各类电子元器件、显示器件、计算机软硬件及辅助设备</p>
                 
-                <h3>技术服务</h3>
+                <h3 id="product2">技术服务</h3>
                 <p>技术开发、咨询、交流、转让与推广，信息技术咨询服务</p>
                 
-                <h3>供应链管理</h3>
+                <h3 id="product3">供应链管理</h3>
                 <p>专业的供应链管理服务，包括进出口业务</p>
                 
-                <h3>日用品销售</h3>
+                <h3 id="product4">日用品销售</h3>
                 <p>化妆品、服装服饰、鞋帽、箱包、珠宝首饰等日用百货</p>
             </div>
         </section>
         
         <section id="about">
-            <h2>关于我们</h2>
-            <p>深圳市华盛伟业网络技术有限公司成立于2022-07-20</p>
+            <h2 id="aboutTitle">关于我们</h2>
+            <p id="aboutText">深圳市华盛伟业网络技术有限公司成立于2022-07-20</p>
         </section>
     </div>
     
     <footer>
-        <p>© 2023 深圳市华盛伟业网络技术有限公司 版权所有</p>
+        <p id="copyright">© 2023 深圳市华盛伟业网络技术有限公司 版权所有</p>
     </footer>
+    
+    <script>
+        // 语言资源数据
+        const locales = {
+            "zh-CN": {
+                "title": "深圳市华盛伟业网络技术有限公司",
+                "slogan": "专业电子元器件与技术服务提供商",
+                "nav": ["首页", "产品服务", "关于我们", "联系我们"],
+                "content": {
+                    "welcome": "欢迎来到华盛伟业",
+                    "welcomeText": "我们致力于为客户提供优质的电子元器件和技术服务解决方案。",
+                    "business": "主营业务",
+                    "products": ["电子元器件", "技术服务", "供应链管理", "日用品销售"],
+                    "about": "关于我们",
+                    "aboutText": "深圳市华盛伟业网络技术有限公司成立于2022-07-20",
+                    "copyright": "© 2023 深圳市华盛伟业网络技术有限公司 版权所有"
+                }
+            },
+            "en": {
+                "title": "Shenzhen Huaweiye Network Technology Co., Ltd",
+                "slogan": "Professional Electronic Components and Technical Service Provider",
+                "nav": ["Home", "Products", "About", "Contact"],
+                "content": {
+                    "welcome": "Welcome to Huaweiye",
+                    "welcomeText": "We are committed to providing high-quality electronic components and technical services solutions.",
+                    "business": "Main Business",
+                    "products": ["Electronic Components", "Technical Services", "Supply Chain", "Daily Goods"],
+                    "about": "About Us",
+                    "aboutText": "Shenzhen Huaweiye Network Technology Co., Ltd was founded on 2022-07-20",
+                    "copyright": "© 2023 Shenzhen Huaweiye Network Technology Co., Ltd All Rights Reserved"
+                }
+            },
+            "ja": {
+                "title": "深セン華盛偉業ネットワーク技術有限公司",
+                "slogan": "専門電子部品と技術サービスプロバイダー",
+                "nav": ["ホーム", "製品", "会社概要", "お問い合わせ"],
+                "content": {
+                    "welcome": "華盛偉業へようこそ",
+                    "welcomeText": "私たちは高品質な電子部品と技術サービスソリューションを提供することに専念しています。",
+                    "business": "主な事業",
+                    "products": [
+                        "電子部品", 
+                        "電子部品の卸売・小売、表示デバイス、コンピュータソフトウェア・ハードウェア及び補助機器",
+                        "技術開発、コンサルティング、交流、移転・普及、情報技術コンサルティングサービス",
+                        "専門的なサプライチェーン管理サービス、輸出入業務を含む"
+                    ],
+                    "about": "会社概要",
+                    "aboutText": "深セン華盛偉業ネットワーク技術有限公司は2022年7月20日に設立されました",
+                    "copyright": "© 2023 深セン華盛偉業ネットワーク技術有限公司 無断複写・転載を禁じます"
+                }
+            },
+            "zh-TW": {
+                "title": "深圳市華盛偉業網絡技術有限公司",
+                "slogan": "專業電子元器件與技術服務提供商",
+                "nav": ["首頁", "產品服務", "關於我們", "聯繫我們"],
+                "content": {
+                    "welcome": "歡迎來到華盛偉業",
+                    "welcomeText": "我們致力於為客戶提供優質的電子元器件和技術服務解決方案。",
+                    "business": "主營業務",
+                    "products": ["電子元器件", "技術服務", "供應鏈管理", "日用品銷售"],
+                    "about": "關於我們",
+                    "aboutText": "深圳市華盛偉業網絡技術有限公司成立於2022-07-20",
+                    "copyright": "© 2023 深圳市華盛偉業網絡技術有限公司 版權所有"
+                }
+            }
+        };
+
+        // 更新页面内容
+        function updateContent(lang) {
+            const locale = locales[lang] || locales['zh-CN'];
+            
+            // 更新标题和标语
+            document.title = locale.title;
+            document.getElementById('companyName').textContent = locale.title;
+            document.getElementById('slogan').textContent = locale.slogan;
+            
+            // 更新导航菜单
+            document.getElementById('navHome').textContent = locale.nav[0];
+            document.getElementById('navProducts').textContent = locale.nav[1];
+            document.getElementById('navAbout').textContent = locale.nav[2];
+            document.getElementById('navContact').textContent = locale.nav[3];
+            
+            // 更新主要内容
+            document.getElementById('welcomeTitle').textContent = locale.content.welcome;
+            document.getElementById('welcomeText').textContent = locale.content.welcomeText;
+            document.getElementById('businessTitle').textContent = locale.content.business;
+            
+            document.getElementById('product1').textContent = locale.content.products[0];
+            document.getElementById('product2').textContent = locale.content.products[1];
+            document.getElementById('product3').textContent = locale.content.products[2];
+            document.getElementById('product4').textContent = locale.content.products[3];
+            
+            document.getElementById('aboutTitle').textContent = locale.content.about;
+            document.getElementById('aboutText').textContent = locale.content.aboutText;
+            document.getElementById('copyright').textContent = locale.content.copyright;
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            const langSelect = document.getElementById('languageSelect');
+            
+            // 设置语言切换事件
+            langSelect.addEventListener('change', function() {
+                updateContent(this.value);
+            });
+            
+            // 初始加载中文
+            updateContent('zh-CN');
+        });
+    </script>
 </body>
 </html>
